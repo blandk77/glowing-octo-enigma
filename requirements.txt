@@ -2,3 +2,8 @@ pyrofork
 tgcrypto
 psutil
 humanize
+Flask
+gunicorn
+Jinja2
+werkzeug
+itsdangerous
