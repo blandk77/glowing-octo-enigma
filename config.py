@@ -1,9 +1,9 @@
 # Bot configuration
-BOT_TOKEN = ""
+BOT_TOKEN = "7898251858:AAEH62w1B0wWw5M7Fq8J62tebzTH30zXuM4"
 API_ID = 27394279
 API_HASH = "90a9aa4c31afa3750da5fd686c410851"
-ADMINS = [, ]
-OWNER = 
+ADMINS = [7465574522]
+OWNER = 7465574522
 
 # FFmpeg configuration
 FFMPEG_PATH = "ffmpeg" 
