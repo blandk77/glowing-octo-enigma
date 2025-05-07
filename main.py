@@ -47,7 +47,7 @@ async def validate_config():
         logging.error("No FFmpeg profiles defined")
         raise ValueError("No FFmpeg profiles defined")
 
-@app.on_message(filters.command("start"))
+@Client.on_message(filters.command("start"))
 async def start_command(client: Client, message: Message):
     """Handle /start command."""
     if not await is_admin(message.from_user.id):
@@ -55,7 +55,7 @@ async def start_command(client: Client, message: Message):
         return
     await message.reply_text("Welcome! Send a video file to encode.")
 
-@app.on_message(filters.media | filters.document)
+@Client.on_message(filters.media | filters.document)
 async def handle_file(client: Client, message: Message):
     """Handle incoming video files."""
     if not await is_admin(message.from_user.id):
@@ -83,7 +83,7 @@ async def handle_file(client: Client, message: Message):
         reply_markup=InlineKeyboardMarkup(buttons),
     )
 
-@app.on_callback_query(filters.regex(r"encode_(.+)_(\d+)"))
+@Client.on_callback_query(filters.regex(r"encode_(.+)_(\d+)"))
 async def select_profile(client: Client, callback_query):
     """Handle encoding profile selection."""
     if not await is_admin(callback_query.from_user.id):
@@ -111,7 +111,7 @@ async def select_profile(client: Client, callback_query):
     if not current_job:
         await process_queue()
 
-@app.on_callback_query(filters.regex("cancel_job"))
+@Client.on_callback_query(filters.regex("cancel_job"))
 async def cancel_job(client: Client, callback_query):
     """Cancel a job."""
     if not await is_admin(callback_query.from_user.id):
